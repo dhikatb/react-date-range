@@ -164,7 +164,7 @@ class Calendar extends PureComponent {
     const { focusedDate } = this.state;
     const { isFirstRender } = this;
 
-    const visibleMonths = this.list.getVisibleRange();
+    const visibleMonths = this.list ? this.list.getVisibleRange() : [];
     // prevent scroll jump with wrong visible value
     if (visibleMonths[0] === undefined) return;
     const visibleMonth = addMonths(minDate, visibleMonths[0] || 0);
