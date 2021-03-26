@@ -80,7 +80,7 @@ class Calendar extends PureComponent {
       return;
     }
     const targetMonthIndex = differenceInCalendarMonths(date, props.minDate, this.dateOptions);
-    const visibleMonths = this.list.getVisibleRange();
+    const visibleMonths = this.list ? this.list.getVisibleRange() : [];
     if (preventUnnecessary && visibleMonths.includes(targetMonthIndex)) return;
     this.isFirstRender = true;
     this.list.scrollTo(targetMonthIndex);
@@ -90,7 +90,7 @@ class Calendar extends PureComponent {
     const newProps = props.scroll.enabled
       ? {
           ...props,
-          months: this.list.getVisibleRange().length,
+          months: this.list ? this.list.getVisibleRange().length : [],
         }
       : props;
     const newFocus = calcFocusDate(this.state.focusedDate, newProps);
