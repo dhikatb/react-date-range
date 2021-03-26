@@ -90,7 +90,7 @@ class Calendar extends PureComponent {
     const newProps = props.scroll.enabled
       ? {
           ...props,
-          months: this.list ? this.list.getVisibleRange().length : [],
+          months: this.list ? this.list.getVisibleRange().length : 0,
         }
       : props;
     const newFocus = calcFocusDate(this.state.focusedDate, newProps);
